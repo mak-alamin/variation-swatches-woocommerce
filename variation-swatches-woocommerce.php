@@ -10,7 +10,6 @@
 * Author URI:
 * License: GPL v2 or later
 * License URI: https: //www.gnu.org/licenses/gpl-2.0.html
-* Update URI: 
 * Text Domain: variation-swatches-woocommerce
 * Domain Path: /languages
 */
