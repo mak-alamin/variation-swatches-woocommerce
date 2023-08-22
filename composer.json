@@ -1,0 +1,16 @@
+{
+    "name": "mak-alamin/vriation-swatches-woocommerce",
+    "type": "wordpress-plugin",
+    "autoload": {
+        "psr-4": {
+            "WP_WOO_VS\\": "inc/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mak Alamin",
+            "email": "makalamin012@gmail.com"
+        }
+    ],
+    "require": {}
+}
