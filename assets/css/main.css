@@ -16,6 +16,7 @@
 }
 .variations td.value {
     display: flex;
+    min-height: 65px;
 }
 button.color-swatch.active {
     border: 3px solid #000;

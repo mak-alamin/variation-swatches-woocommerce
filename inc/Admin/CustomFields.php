@@ -20,9 +20,9 @@ class CustomFields {
     public function add_pa_color_color_code_field() {
         ?>
         <div class="form-field term-color-code-wrap">
-            <label for="pa_color_code"><?php _e('Color Code', 'textdomain'); ?></label>
+            <label for="pa_color_code"><?php _e('Color Code', 'variation-swatches-woocommerce'); ?></label>
             <input type="text" id="pa_color_code" name="pa_color_code" class="regular-text" />
-            <p><?php _e('Enter the color code (e.g., #FF0000) associated with this attribute term.', 'textdomain'); ?></p>
+            <p><?php _e('Enter the color code (e.g., #FF0000) associated with this attribute term.', 'variation-swatches-woocommerce'); ?></p>
         </div>
         <?php
     }
@@ -31,10 +31,10 @@ class CustomFields {
         $color_code = get_term_meta($term->term_id, 'pa_color_code', true);
         ?>
         <tr class="form-field term-color-code-wrap">
-            <th scope="row"><label for="pa_color_code"><?php _e('Color Code', 'textdomain'); ?></label></th>
+            <th scope="row"><label for="pa_color_code"><?php _e('Color Code', 'variation-swatches-woocommerce'); ?></label></th>
             <td>
                 <input type="text" id="pa_color_code" name="pa_color_code" class="regular-text" value="<?php echo esc_attr($color_code); ?>" />
-                <p class="description"><?php _e('Enter the color code (e.g., #FF0000) associated with this attribute term.', 'textdomain'); ?></p>
+                <p class="description"><?php _e('Enter the color code (e.g., #FF0000) associated with this attribute term.', 'variation-swatches-woocommerce'); ?></p>
             </td>
         </tr>
         <?php

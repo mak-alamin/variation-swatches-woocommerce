@@ -16,6 +16,8 @@ final class Init
     {
         return [
             Base\Assets::class,
+            Base\Ajax::class,
+            Admin\Settings::class,
             Admin\CustomFields::class,
             Frontend\Variation_Swatches::class
         ];

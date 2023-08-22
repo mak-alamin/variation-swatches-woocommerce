@@ -1,31 +1,56 @@
-(function($){
-    var colorOptions = $("#pa_color option");
+(function ($) {
+  var colorOptions = $("#pa_color option");
 
-    var colorSwatches = '<div class="color-swatches">';
-    $.each(colorOptions, function(i, option){
-        var colorName = $(option).val();
+  $("#pa_color")
+    .closest("td.value")
+    .append('<div class="color-swatches"></div>');
 
-        if(colorName != ''){
-            colorSwatches += '<button title="'+colorName+'" value="'+colorName+'"  class="color-swatch" style="background:'+colorName+'"> </button>';
-        }
-    });
+  $.each(colorOptions, function (i, option) {
+    var colorName = $(option).val();
 
-    colorSwatches += '</div>';
+    var colorSwatchBtn;
 
-    $("#pa_color").closest("td.value").append(colorSwatches);
+    if (colorName != "") {
+      jQuery.ajax({
+        method: "GET",
+        url: WPWooVsData.ajaxurl,
+        data: {
+          action: "get_swatches_color_code",
+          color_name: colorName,
+        },
+        success: function (res) {
+          console.log(res);
+          let colorCode = (res == '') ? colorName : res;
 
+          colorSwatchBtn =
+            '<button title="' +
+            colorName +
+            '" value="' +
+            colorName +
+            '"  class="color-swatch" style="background:' +
+            colorCode +
+            '"> </button>';
 
-    $(document).on("click", ".color-swatches button", function(e){
-        e.preventDefault();
+          $(".color-swatches").append(colorSwatchBtn);
+        },
+        error: function (err) {
+          console.log(err);
+        },
+      });
+    }
+  });
 
-        $(".color-swatches button").removeClass("active");
-        $(this).addClass("active");
+  $(document).on("click", ".color-swatches button", function (e) {
+    e.preventDefault();
 
-        $("#pa_color").val($(this).val()).trigger('change');
-    });
+    $(".color-swatches button").removeClass("active");
+    $(this).addClass("active");
 
-    $(document).on("click", "a.reset_variations", function(){
-        $(".color-swatches button").removeClass("active");
-        $("#pa_color").val('');
-    });
-})(jQuery)
+    $("#pa_color").val($(this).val()).trigger("change");
+  });
+
+  $(document).on("click", "a.reset_variations", function () {
+    $(".color-swatches button").removeClass("active");
+    $("#pa_color").val("");
+  });
+})(jQuery);
