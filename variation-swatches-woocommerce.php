@@ -42,6 +42,20 @@ function wp_woo_vs_initial_loads()
 add_action('plugins_loaded', 'wp_woo_vs_initial_loads');
 
 /**
+ * Settings Action Link
+ */
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'wp_woo_vs_add_settings_action_link');
+
+function wp_woo_vs_add_settings_action_link($links)
+{
+	$settings_link = '<a href="' . admin_url('admin.php?page=wc-settings&tab=variation_swatches') . '">' . __('Settings', 'variation-swatches-woocommerce') . '</a>';
+
+	array_push($links, $settings_link);
+
+	return $links;
+}
+
+/**
  * Initialize all the core classes of the plugin
  */
 if (class_exists('WP_WOO_VS\\Init')) {
